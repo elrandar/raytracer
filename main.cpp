@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "vector3.h"
-#include "image.h"
+#include "utils/vector3.h"
+#include "utils/image.h"
 
 int main() {
     std::cout << "Hello, World!" << std::endl;

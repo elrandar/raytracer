@@ -3,4 +3,4 @@ project(raytracer)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(raytracer main.cpp color.cpp color.h vector3.cpp vector3.h point3.cpp point3.h image.cpp image.h)
+add_executable(raytracer main.cpp utils/color.cpp utils/color.h utils/vector3.cpp utils/vector3.h utils/point3.cpp utils/point3.h utils/image.cpp utils/image.h scene/scene.cpp scene/scene.h)
