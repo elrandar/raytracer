@@ -19,6 +19,10 @@ raytracer::Color::Color(uint8_t R, uint8_t G, uint8_t B, uint8_t A) : Color(R, G
     m_A = A;
 }
 
+bool raytracer::Color::operator==(const raytracer::Color &other) const {
+    return other.m_R == m_R && other.m_B == m_B && other.m_G == m_G;
+}
+
 std::ostream &raytracer::operator<<(std::ostream &out, const raytracer::Color &c) {
     return out << "Vector3 {R=" << c.m_R << ", G=" << c.m_G << ", B=" << c.m_B << "}";
 }

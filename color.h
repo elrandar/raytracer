@@ -22,7 +22,7 @@ namespace raytracer {
         Color(uint8_t R, uint8_t G, uint8_t B);
         Color(uint8_t R, uint8_t G, uint8_t B, uint8_t A);
 
-
+        bool operator==(const Color& other) const;
     };
 
     std::ostream& operator<<(std::ostream& out, const Color &c);
