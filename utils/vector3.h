@@ -12,15 +12,15 @@ namespace raytracer {
 
     class Vector3 {
     public:
-        float m_x;
-        float m_y;
-        float m_z;
+        double m_x;
+        double m_y;
+        double m_z;
 
         Vector3();
-        Vector3(float x, float y, float z);
+        Vector3(double x, double y, double z);
         Vector3(const Point3 &start, const Point3 &end);
 
-        Vector3 operator*(const float &constant);
+        Vector3 operator*(const double &constant);
         Vector3 operator+(const Vector3 &other);
         Vector3 operator-(const Vector3 &other);
 

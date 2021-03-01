@@ -7,10 +7,16 @@
 
 
 #include <vector>
+#include "light.h"
+#include "camera.h"
+#include "object.h"
 
 namespace raytracer {
     class Scene {
     public:
+        std::vector<Light*>;
+        std::vector<Object*>;
+        Camera camera;
     };
 }
 

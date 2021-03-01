@@ -10,6 +10,7 @@
 namespace raytracer {
     class Ray3 {
     public:
+        Ray3(Point3 p, Vector3 v);
         Vector3 vector;
         Point3 point;
     };

@@ -4,14 +4,14 @@
 
 #include "vector3.h"
 
-raytracer::Vector3::Vector3(float x, float y, float z)
+raytracer::Vector3::Vector3(double x, double y, double z)
     : m_x(x), m_y(y), m_z(z)
 {}
 
 raytracer::Vector3::Vector3() : Vector3(0, 0, 0)
 {}
 
-raytracer::Vector3 raytracer::Vector3::operator*(const float &constant) {
+raytracer::Vector3 raytracer::Vector3::operator*(const double &constant) {
     m_x = m_x * constant;
     m_y = m_y * constant;
     m_z = m_z * constant;

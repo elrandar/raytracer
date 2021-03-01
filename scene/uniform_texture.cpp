@@ -4,6 +4,6 @@
 
 #include "uniform_texture.h"
 
-raytracer::TextureInfo raytracer::UniformTexture::get_info(float x, float y) {
+raytracer::TextureInfo raytracer::UniformTexture::get_info(double x, double y) {
     return raytracer::TextureInfo(m_kd, m_ks, m_color);
 }

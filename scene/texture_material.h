@@ -8,19 +8,19 @@
 namespace raytracer {
     class TextureInfo {
     public:
-        TextureInfo(float k_d, float k_s, Color color)
+        TextureInfo(double k_d, double k_s, Color color)
             : k_d(k_d), k_s(k_s) {
             m_color = color;
         }
-        float k_d;
-        float k_s;
+        double k_d;
+        double k_s;
         Color m_color;
     };
 
     class TextureMaterial {
 
     public:
-        virtual TextureInfo get_info(float x, float y) = 0;
+        virtual TextureInfo get_info(double x, double y) = 0;
     };
 }
 

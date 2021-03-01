@@ -6,9 +6,9 @@
 #define RAYTRACER_LIGHT_H
 
 
-class light {
+class Light {
 
+public:
 };
-
 
 #endif //RAYTRACER_LIGHT_H

@@ -2,7 +2,7 @@
 #include <fstream>
 #include "utils/vector3.h"
 #include "utils/image.h"
-
+#include "scene/sphere.h"
 int main() {
     std::cout << "Hello, World!" << std::endl;
 
@@ -25,5 +25,9 @@ int main() {
     f << img.to_PPM();
     f.close();
 
+    auto sph = raytracer::Sphere(0.10, raytracer::Point3(-10, 0, 0));
+    auto p = sph.find_intersection(raytracer::Ray3(raytracer::Point3(0, 0, 0),
+                                          raytracer::Vector3(2, 0, 0)));
+    std::cout << '\n' << p;
     return 0;
 }

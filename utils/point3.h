@@ -11,12 +11,14 @@ namespace raytracer {
     class Point3 {
 
     public:
-        float m_x;
-        float m_y;
-        float m_z;
+        bool is_none{};
+        double m_x{};
+        double m_y{};
+        double m_z{};
 
-        Point3(float x, float y, float z);
+        Point3(double x, double y, double z);
         Point3();
+        explicit Point3(bool is_none);
     };
 
     std::ostream &operator<<(std::ostream &out, const Point3 &p);

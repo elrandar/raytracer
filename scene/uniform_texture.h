@@ -12,11 +12,11 @@
 namespace raytracer {
     class UniformTexture : public TextureMaterial {
 
-        float m_kd;
-        float m_ks;
+        double m_kd;
+        double m_ks;
         Color m_color;
 
-        TextureInfo get_info(float x, float y);
+        TextureInfo get_info(double x, double y);
     };
 }
 
