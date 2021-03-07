@@ -4,6 +4,7 @@
 #include "utils/image.h"
 #include "scene/sphere.h"
 #include "scene/scene.h"
+#include "scene/plane.h"
 #include "scene/point_light.h"
 #include "cmath"
 int main() {
@@ -44,7 +45,7 @@ int main() {
                                               Color(0, 0, 255)));
         scene.objects.emplace_back(new Sphere(0.3, Point3(9, 0, -1), Color(255, 0, 0)));
         scene.objects.emplace_back(new Sphere(0.6, Point3(5, 0.1, 2), Color(0, 255, 100)));
-
+        scene.objects.emplace_back(new Plane(Vector3(0, 1, 0), Point3(0, -200, 0)));
         double nb_cols = 1280;
         double nb_rows = 680;
         auto im = Image(nb_cols, nb_rows);
