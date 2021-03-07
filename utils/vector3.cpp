@@ -53,6 +53,10 @@ raytracer::Point3 raytracer::Vector3::to_point() const {
     return Point3(m_x, m_y, m_z);
 }
 
+double raytracer::Vector3::operator*(const raytracer::Vector3 &other) {
+    return m_x * other.m_x + m_y * other.m_y + m_z * other.m_z;
+}
+
 std::ostream &raytracer::operator<<(std::ostream &out, const raytracer::Vector3 &v) {
     return out << "Vector3 {x=" << v.m_x << ", y=" << v.m_y << ", z=" << v.m_z << "}";
 }

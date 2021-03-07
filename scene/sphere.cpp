@@ -59,10 +59,10 @@ namespace raytracer {
     }
 
     Sphere::Sphere(double radius, Point3 center) : radius(radius), center(center) {
-        mat = std::make_unique<UniformTexture>(0,0,Color(0, 0, 255));
+        mat = std::make_unique<UniformTexture>(1,1,Color(0, 0, 255));
     }
 
     Sphere::Sphere(double radius, Point3 center, Color color) : radius(radius), center(center){
-        mat = std::make_unique<UniformTexture>(0,0,color);
+        mat = std::make_unique<UniformTexture>(1,1,color);
     }
 }

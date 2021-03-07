@@ -27,6 +27,7 @@ namespace raytracer {
         Vector3 operator+(const Vector3 &other);
         Vector3 operator-(const Vector3 &other);
         Vector3 operator^(const Vector3 &other);
+        double  operator*(const Vector3 &other);
 
 
     };

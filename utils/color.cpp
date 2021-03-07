@@ -23,6 +23,10 @@ bool raytracer::Color::operator==(const raytracer::Color &other) const {
     return other.m_R == m_R && other.m_B == m_B && other.m_G == m_G;
 }
 
+raytracer::Color raytracer::Color::operator*(const double &nb) const {
+    return raytracer::Color(m_R * nb, m_G * nb, m_B * nb);
+}
+
 std::ostream &raytracer::operator<<(std::ostream &out, const raytracer::Color &c) {
     return out << "Vector3 {R=" << c.m_R << ", G=" << c.m_G << ", B=" << c.m_B << "}";
 }

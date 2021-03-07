@@ -5,12 +5,16 @@
 #ifndef RAYTRACER_POINT_LIGHT_H
 #define RAYTRACER_POINT_LIGHT_H
 #include "light.h"
+#include "../utils/point3.h"
 
-class PointLight : public Light {
-public:
-    double intensity;
-    explicit PointLight(double i);
-};
+namespace raytracer {
+    class PointLight : public Light {
+    public:
+        double intensity;
+        Point3 position;
 
+        explicit PointLight(double i, Point3 pos);
+    };
+}
 
 #endif //RAYTRACER_POINT_LIGHT_H

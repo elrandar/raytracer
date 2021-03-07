@@ -4,6 +4,8 @@
 
 #include "point_light.h"
 
-PointLight::PointLight(double i) : intensity(i){
 
+raytracer::PointLight::PointLight(double i, raytracer::Point3 pos)
+    : intensity(i), position(pos)
+{
 }
