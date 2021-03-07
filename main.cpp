@@ -45,12 +45,12 @@ int main() {
                                               Color(0, 0, 255)));
         scene.objects.emplace_back(new Sphere(0.1, Point3(5, 0, -0.5), Color(255, 0, 0)));
         scene.objects.emplace_back(new Sphere(0.1, Point3(5.3, 0, 0.5), Color(0, 255, 100)));
-        scene.objects.emplace_back(new Plane(Vector3(0, 1, 0), Point3(0, 1, 0)));
+        scene.objects.emplace_back(new Plane(Vector3(0, 1, 0), Point3(0, -0.01, 0)));
 //        scene.objects.emplace_back(new Plane(Vector3(1, 0, 0), Point3(7, 0, 0)));
 
         scene.lights.emplace_back(new PointLight(1, Point3(4, 5, -4)));
-        int nb_cols = 1280 / 8;
-        int nb_rows = 720 / 8;
+        int nb_cols = 1280;
+        int nb_rows = 720;
         auto im = Image(nb_cols, nb_rows);
         im.fill_white();
         auto img_width = 2 * scene.camera.z_min * tan(scene.camera.beta / 2);
@@ -67,8 +67,8 @@ int main() {
         std::cout << "\ny_a = " << y_a_scaled << "\nx_a = " << x_a_scaled;
         std::cout << "\np = " << p << "\n p.norm() = " << p.norm();
 
-        Vector3 shift_x = x_a_scaled * (nb_cols / 2 - 0.5);
-        Vector3 shift_y = y_a_scaled * (nb_rows / 2 - 0.5);
+        Vector3 shift_x = x_a_scaled * ((double) nb_cols / 2 - 0.5);
+        Vector3 shift_y = y_a_scaled * ((double) nb_rows / 2 - 0.5);
         Point3 top_left = (scene.camera.p / p.norm()) + shift_x.to_point() + shift_y.to_point();
         std::cout << "\ntopleft = " << top_left;
         std::cout << "\nbottomright = " << top_left - (x_a_scaled * nb_cols).to_point()
@@ -89,6 +89,10 @@ int main() {
                 {
                     Point3 intersection_point = object->find_intersection(ray);
 
+                    if (p * Vector3(scene.camera.center, intersection_point) < 0)
+                    {
+                        intersection_point.m_is_none = true;
+                    }
                     if (!intersection_point.m_is_none) {
                         auto point_distance = Vector3(scene.camera.center, intersection_point).norm();
                         if (best_point_distance == -1 || point_distance < best_point_distance) {

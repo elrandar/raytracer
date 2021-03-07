@@ -10,6 +10,7 @@ namespace raytracer {
     public:
         Vector3 normal;
         Point3 point;
+        double d;
 
         Vector3 get_normal(Point3 point3) override;
         Point3 find_intersection(Ray3 ray) override;

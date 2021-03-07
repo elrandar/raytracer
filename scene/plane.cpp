@@ -14,7 +14,7 @@ raytracer::Point3 raytracer::Plane::find_intersection(raytracer::Ray3 ray) {
     auto a = normal.m_x;
     auto b = normal.m_y;
     auto c = normal.m_z;
-    auto d = - a * point.m_x - b * point.m_y - c * point.m_z;
+
 
     auto ax = ray.point.m_x;
     auto ay = ray.point.m_y;
@@ -40,6 +40,7 @@ raytracer::TextureInfo raytracer::Plane::get_texture_info(double x, double y) {
 
 raytracer::Plane::Plane(raytracer::Vector3 v, raytracer::Point3 pt)
     : normal(v), point(pt) {
-    mat = std::make_unique<UniformTexture>(1,1,Color(255, 255, 255));
+    d = - normal.m_x * point.m_x - normal.m_y * point.m_y - normal.m_z * point.m_z;
+    mat = std::make_unique<UniformTexture>(0.5,0.5,Color(255, 255, 255));
 }
 
