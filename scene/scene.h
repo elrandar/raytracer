@@ -14,8 +14,8 @@
 namespace raytracer {
     class Scene {
     public:
-        std::vector<Light*>;
-        std::vector<Object*>;
+        std::vector<Light*> lights;
+        std::vector<Object*> objects;
         Camera camera;
     };
 }

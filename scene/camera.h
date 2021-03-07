@@ -16,6 +16,8 @@ namespace raytracer {
         double alpha;
         double beta;
         double z_min;
+
+        Camera();
     };
 }
 

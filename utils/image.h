@@ -20,6 +20,7 @@ namespace raytracer {
 
         void fill_white();
         std::string to_PPM();
+        void set_pixel(int x, int y, Color col);
     };
 
 }

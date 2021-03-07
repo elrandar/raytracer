@@ -3,7 +3,7 @@
 //
 
 #include "vector3.h"
-
+#include <cmath>
 raytracer::Vector3::Vector3(double x, double y, double z)
     : m_x(x), m_y(y), m_z(z)
 {}
@@ -12,9 +12,6 @@ raytracer::Vector3::Vector3() : Vector3(0, 0, 0)
 {}
 
 raytracer::Vector3 raytracer::Vector3::operator*(const double &constant) {
-    m_x = m_x * constant;
-    m_y = m_y * constant;
-    m_z = m_z * constant;
     return raytracer::Vector3(m_x * constant,
                               m_y * constant,
                               m_z * constant);
@@ -36,6 +33,24 @@ raytracer::Vector3::Vector3(const raytracer::Point3 &start, const raytracer::Poi
     : Vector3(end.m_x - start.m_x,
               end.m_y - start.m_y,
               end.m_z - start.m_z){
+}
+
+raytracer::Vector3 raytracer::Vector3::operator^(const raytracer::Vector3 &other) {
+    return raytracer::Vector3(m_y * other.m_z - m_z * other.m_y,
+                              m_z * other.m_x - m_x * other.m_z,
+                              m_x * other.m_y - m_y * other.m_x);
+}
+
+double raytracer::Vector3::norm() const {
+    return sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
+}
+
+raytracer::Vector3 raytracer::Vector3::operator/(const double &constant) {
+    return *this * (1/constant);
+}
+
+raytracer::Point3 raytracer::Vector3::to_point() const {
+    return Point3(m_x, m_y, m_z);
 }
 
 std::ostream &raytracer::operator<<(std::ostream &out, const raytracer::Vector3 &v) {

@@ -5,6 +5,7 @@
 #ifndef RAYTRACER_SPHERE_H
 #define RAYTRACER_SPHERE_H
 #include "object.h"
+#include "../utils/point3.h"
 namespace raytracer {
 
     class Sphere : public Object {
@@ -18,6 +19,7 @@ namespace raytracer {
 
 
         Sphere(double radius, Point3 center);
+        Sphere(double radius, Point3 center, Color color);
     };
 }
 

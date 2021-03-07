@@ -3,6 +3,7 @@
 //
 
 #include "sphere.h"
+#include "uniform_texture.h"
 #include <cmath>
 
 namespace raytracer {
@@ -58,6 +59,10 @@ namespace raytracer {
     }
 
     Sphere::Sphere(double radius, Point3 center) : radius(radius), center(center) {
+        mat = std::make_unique<UniformTexture>(0,0,Color(0, 0, 255));
+    }
 
+    Sphere::Sphere(double radius, Point3 center, Color color) : radius(radius), center(center){
+        mat = std::make_unique<UniformTexture>(0,0,color);
     }
 }

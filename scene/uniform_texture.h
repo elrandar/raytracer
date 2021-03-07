@@ -17,6 +17,9 @@ namespace raytracer {
         Color m_color;
 
         TextureInfo get_info(double x, double y);
+
+    public:
+        UniformTexture(double kd, double ks, Color color);
     };
 }
 

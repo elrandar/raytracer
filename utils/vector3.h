@@ -20,9 +20,13 @@ namespace raytracer {
         Vector3(double x, double y, double z);
         Vector3(const Point3 &start, const Point3 &end);
 
+        double norm() const;
+        Point3 to_point() const;
         Vector3 operator*(const double &constant);
+        Vector3 operator/(const double &constant);
         Vector3 operator+(const Vector3 &other);
         Vector3 operator-(const Vector3 &other);
+        Vector3 operator^(const Vector3 &other);
 
 
     };

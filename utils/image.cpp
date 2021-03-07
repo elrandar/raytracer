@@ -48,3 +48,7 @@ void raytracer::Image::fill_white() {
     }
 
 }
+
+void raytracer::Image::set_pixel(int x, int y, Color col) {
+    m_pix_array[m_width * y + x] = col;
+}
