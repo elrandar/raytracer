@@ -45,12 +45,12 @@ int main() {
                                               Color(0, 0, 255)));
         scene.objects.emplace_back(new Sphere(0.1, Point3(1, 0, -0.3), Color(255, 0, 0)));
         scene.objects.emplace_back(new Sphere(0.1, Point3(1, 0, 0.3), Color(0, 255, 100)));
-        scene.objects.emplace_back(new Plane(Vector3(0, 1, 0), Point3(0, -0.09, 0)));
+        scene.objects.emplace_back(new Plane(Vector3(0, 1, 0), Point3(0, -0.10, 0)));
 //        scene.objects.emplace_back(new Plane(Vector3(1, 0, 0), Point3(7, 0, 0)));
 //        scene.lights.emplace_back(new PointLight(0.5, Point3(0, 3, -2)));
         scene.lights.emplace_back(new PointLight(0.2, Point3(0, 1, -1)));
-        scene.lights.emplace_back(new PointLight(0.2, Point3(0, 1, 2)));
-        scene.lights.emplace_back(new PointLight(1, Point3(1, 0, 6)));
+//        scene.lights.emplace_back(new PointLight(0.2, Point3(0, 1, 2)));
+        scene.lights.emplace_back(new PointLight(0.5, Point3(1, 0, 0.15)));
 
         int nb_cols = 1280;
         int nb_rows = 720;

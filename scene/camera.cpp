@@ -11,6 +11,6 @@ raytracer::Camera::Camera()
     {
     alpha = 0.7;
     beta = (double)16/(double)9 * alpha;
-    up = Vector3(1, 1, 0);
+    up = Vector3(0, 1, 0);
     z_min = 1;
 }
