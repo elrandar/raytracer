@@ -41,7 +41,7 @@ std::string raytracer::Image::to_PPM() {
     return str;
 }
 
-void raytracer::Image::fill_white() {
+void raytracer::Image::fill_black() {
     for (int i = 0; i < m_height * m_width; i++)
     {
         m_pix_array[i] = Color(0, 0, 0);

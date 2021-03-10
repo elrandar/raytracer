@@ -24,6 +24,10 @@ namespace raytracer {
 
         bool operator==(const Color& other) const;
         Color operator*(const double &nb) const;
+        Color operator+(const Color &color) const;
+        Color operator-(const Color &color) const;
+
+        void clamp();
     };
 
     std::ostream& operator<<(std::ostream& out, const Color &c);

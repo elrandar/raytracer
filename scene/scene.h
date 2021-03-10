@@ -10,6 +10,7 @@
 #include "light.h"
 #include "camera.h"
 #include "object.h"
+#include "../utils/image.h"
 
 namespace raytracer {
     class Scene {
@@ -17,6 +18,9 @@ namespace raytracer {
         std::vector<Light*> lights;
         std::vector<Object*> objects;
         Camera camera;
+
+        raytracer::Image generate_image(int nb_cols, int nb_rows);
+        Color cast_ray(Ray3 ray);
     };
 }
 

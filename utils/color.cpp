@@ -27,6 +27,41 @@ raytracer::Color raytracer::Color::operator*(const double &nb) const {
     return raytracer::Color(m_R * nb, m_G * nb, m_B * nb);
 }
 
+void raytracer::Color::clamp() {
+    if (m_R > 255)
+        *this = *this - Color(1, 1, 1) * m_R;
+    if (m_G > 255)
+        *this = *this - Color(1, 1, 1) * m_G;
+    if (m_B > 255)
+        *this = *this - Color(1, 1, 1) * m_B;
+}
+
+raytracer::Color raytracer::Color::operator+(const raytracer::Color &color) const {
+    auto r = m_R + color.m_R;
+    auto g = m_G + color.m_G;
+    auto b = m_B + color.m_B;
+    if (r > 255)
+        r = 255;
+    if (g > 255)
+        g = 255;
+    if (b > 255)
+        b = 255;
+    return raytracer::Color(r, g, b);
+}
+
+raytracer::Color raytracer::Color::operator-(const raytracer::Color &color) const {
+    auto r = m_R - color.m_R;
+    auto g = m_G - color.m_G;
+    auto b = m_B - color.m_B;
+    if (r < 0)
+        r = 0;
+    if (g < 0)
+        g = 0;
+    if (b < 0)
+        b = 0;
+    return raytracer::Color(r, g, b);
+}
+
 std::ostream &raytracer::operator<<(std::ostream &out, const raytracer::Color &c) {
     return out << "Vector3 {R=" << c.m_R << ", G=" << c.m_G << ", B=" << c.m_B << "}";
 }

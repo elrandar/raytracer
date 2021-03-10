@@ -18,7 +18,7 @@ namespace raytracer {
 
         Image(int width, int height);
 
-        void fill_white();
+        void fill_black();
         std::string to_PPM();
         void set_pixel(int x, int y, Color col);
     };
