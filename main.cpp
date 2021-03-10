@@ -41,14 +41,16 @@ int main() {
         using namespace raytracer;
         auto scene = Scene();
         scene.camera = Camera();
-        scene.objects.emplace_back(new Sphere(0.1, Point3(2, 0, 0),
+        scene.objects.emplace_back(new Sphere(0.1, Point3(1, 0, 0),
                                               Color(0, 0, 255)));
-        scene.objects.emplace_back(new Sphere(0.1, Point3(2, 0, -0.6), Color(255, 0, 0)));
-        scene.objects.emplace_back(new Sphere(0.1, Point3(2, 0, 0.3), Color(0, 255, 100)));
-        scene.objects.emplace_back(new Plane(Vector3(0, 1, 0), Point3(0, -0.1, 0)));
+        scene.objects.emplace_back(new Sphere(0.1, Point3(1, 0, -0.3), Color(255, 0, 0)));
+        scene.objects.emplace_back(new Sphere(0.1, Point3(1, 0, 0.3), Color(0, 255, 100)));
+        scene.objects.emplace_back(new Plane(Vector3(0, 1, 0), Point3(0, -0.09, 0)));
 //        scene.objects.emplace_back(new Plane(Vector3(1, 0, 0), Point3(7, 0, 0)));
+//        scene.lights.emplace_back(new PointLight(0.5, Point3(0, 3, -2)));
+//        scene.lights.emplace_back(new PointLight(0.5, Point3(2, 1, 0)));
+        scene.lights.emplace_back(new PointLight(1, Point3(0, 1, 6)));
 
-        scene.lights.emplace_back(new PointLight(1, Point3(0, 3, -2)));
         int nb_cols = 1280;
         int nb_rows = 720;
 
@@ -62,7 +64,6 @@ int main() {
 //        std::cout << "\ntopleft = " << top_left;
 //        std::cout << "\nbottomright = " << top_left - (x_a_scaled * nb_cols).to_point()
 //                                                    - (y_a_scaled * nb_rows).to_point();
-
 
         std::ofstream f;
         f.open("../out.ppm");

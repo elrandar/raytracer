@@ -35,6 +35,10 @@ raytracer::Point3 raytracer::Point3::operator-(const raytracer::Point3 &vec) con
                              m_z - vec.m_z);
 }
 
+const bool raytracer::Point3::operator==(const raytracer::Point3 &pt) const {
+    return m_x == pt.m_x && m_y == pt.m_y && m_z == pt.m_z;
+}
+
 std::ostream& raytracer::operator<<(std::ostream &out, const Point3 &p) {
     return out << "Vector3 {x=" << p.m_x << ", y=" << p.m_y << ", z=" << p.m_z << "}";
 }

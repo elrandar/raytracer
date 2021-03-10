@@ -10,8 +10,6 @@
 namespace raytracer {
     class PointLight : public Light {
     public:
-        double intensity;
-        Point3 position;
 
         explicit PointLight(double i, Point3 pos);
     };

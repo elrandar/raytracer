@@ -23,6 +23,7 @@ namespace raytracer {
         Point3 operator/(const double &constant);
         Point3 operator+(const Point3 &pt) const;
         Point3 operator-(const Point3 &pt) const;
+        const bool operator==(const Point3 &pt) const;
     };
     std::ostream& operator<<(std::ostream &out, const Point3& v);
    

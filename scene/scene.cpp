@@ -67,6 +67,8 @@ raytracer::Color raytracer::Scene::cast_ray(Ray3 ray) {
             auto L = Vector3(best_point, light->position);
             L = L / L.norm();
 
+//            if (is_blocked(Ray3(best_point, L), best_point_obj))
+//                continue;
             auto texture_info = best_point_obj->get_texture_info(0, 0);
             auto norm = best_point_obj->get_normal(best_point);
             auto d = Vector3(camera.center, best_point);
@@ -85,10 +87,26 @@ raytracer::Color raytracer::Scene::cast_ray(Ray3 ray) {
 
             auto color = texture_info.m_color * id + Color(255, 255, 255) * pow(is, ns);
 
-            i += color;
+            i = i + color;
         }
         auto fd = 1 / sqrt(best_point_distance);
         return i * fd;
     }
     return Color(0,0,0);
+}
+
+bool raytracer::Scene::is_blocked(Ray3 ray, Object *pObject) {
+    for (auto object : objects)
+    {
+        Point3 intersection_point = object->find_intersection(ray);
+
+        if (ray.vector * Vector3(camera.center, intersection_point) < 0)
+        {
+            intersection_point.m_is_none = true;
+        }
+        if (!intersection_point.m_is_none && object != pObject) {
+            return true;
+        }
+    }
+    return false;
 }

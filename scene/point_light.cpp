@@ -6,6 +6,7 @@
 
 
 raytracer::PointLight::PointLight(double i, raytracer::Point3 pos)
-    : intensity(i), position(pos)
 {
+    intensity = i;
+    position = pos;
 }

@@ -24,12 +24,22 @@ bool raytracer::Color::operator==(const raytracer::Color &other) const {
 }
 
 raytracer::Color raytracer::Color::operator*(const double &nb) const {
-    return raytracer::Color(m_R * nb, m_G * nb, m_B * nb);
+    auto r = m_R * nb;
+    auto g = m_G * nb;
+    auto b = m_B * nb;
+
+    if (r > 255)
+        r = 255;
+    if (g > 255)
+        g = 255;
+    if (b > 255)
+        b = 255;
+    return raytracer::Color(r, g, b);
 }
 
 void raytracer::Color::clamp() {
     if (m_R > 255)
-        *this = *this - Color(1, 1, 1) * m_R;
+        m_R = 255;
     if (m_G > 255)
         *this = *this - Color(1, 1, 1) * m_G;
     if (m_B > 255)
