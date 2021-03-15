@@ -4,11 +4,25 @@
 
 #ifndef RAYTRACER_BLOB_H
 #define RAYTRACER_BLOB_H
+#include "../utils/point3.h"
+#include "triangle.h"
+#include <vector>
 
-
-class blob {
-
-};
+namespace raytracer {
+    class Blob {
+    public:
+        Blob(double e);
+        double find_potential(int x, int y);
+        std::vector<Triangle> marching_cubes();
+    public:
+        std::vector<Point3> potential_points;
+        Point3 corner;
+        double e;
+        double d;
+        int nb_discretisation;
+        double potential;
+    };
+}
 
 
 #endif //RAYTRACER_BLOB_H
