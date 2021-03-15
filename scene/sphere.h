@@ -14,7 +14,7 @@ namespace raytracer {
         double radius;
 
         Point3 find_intersection(Ray3 ray) override;
-        Vector3 get_normal(Point3 point) override;
+        Vector3 get_normal(Point3 point, Vector3 in_vec) override;
         TextureInfo get_texture_info(double x, double y) override;
 
 

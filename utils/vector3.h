@@ -31,7 +31,8 @@ namespace raytracer {
 
 
     };
-
+    Point3 operator+(const Point3 &pt, const Vector3 &vec);
+    Point3 operator-(const Point3 &pt, const Vector3 &vec);
     std::ostream& operator<<(std::ostream &out, const Vector3& v);
 }
 

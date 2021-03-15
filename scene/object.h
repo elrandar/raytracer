@@ -13,7 +13,7 @@ namespace raytracer {
     class Object {
 
     public:
-        virtual Vector3 get_normal(Point3 point) = 0;
+        virtual Vector3 get_normal(Point3 point, Vector3 in_vec) = 0;
         virtual TextureInfo get_texture_info(double x, double y) = 0;
 
 

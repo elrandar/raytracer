@@ -60,3 +60,11 @@ double raytracer::Vector3::operator*(const raytracer::Vector3 &other) {
 std::ostream &raytracer::operator<<(std::ostream &out, const raytracer::Vector3 &v) {
     return out << "Vector3 {x=" << v.m_x << ", y=" << v.m_y << ", z=" << v.m_z << "}";
 }
+
+raytracer::Point3 raytracer::operator+(const raytracer::Point3 &pt, const raytracer::Vector3 &vec) {
+    return raytracer::Point3(pt.m_x + vec.m_x, pt.m_y + vec.m_y, pt.m_z + vec.m_z);
+}
+
+raytracer::Point3 raytracer::operator-(const raytracer::Point3 &pt, const raytracer::Vector3 &vec) {
+    return raytracer::Point3(pt.m_x - vec.m_x, pt.m_y - vec.m_y, pt.m_z - vec.m_z);
+}

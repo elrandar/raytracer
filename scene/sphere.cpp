@@ -48,7 +48,7 @@ namespace raytracer {
         }
     }
 
-    raytracer::Vector3 raytracer::Sphere::get_normal(raytracer::Point3 point) {
+    Vector3 raytracer::Sphere::get_normal(Point3 point, Vector3 in_vec) {
         return raytracer::Vector3(point.m_x - center.m_x,
                                   point.m_y - center.m_y,
                                   point.m_z - center.m_z);

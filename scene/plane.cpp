@@ -6,7 +6,9 @@
 #include "uniform_texture.h"
 
 
-raytracer::Vector3 raytracer::Plane::get_normal(raytracer::Point3 point3) {
+raytracer::Vector3 raytracer::Plane::get_normal(Point3 point3, Vector3 in_vec) {
+    if (normal * in_vec > 0)
+        return normal * -1;
     return normal;
 }
 

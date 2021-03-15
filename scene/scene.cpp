@@ -71,7 +71,7 @@ raytracer::Color raytracer::Scene::cast_ray(Ray3 ray) {
                 continue;
             L = L / L.norm();
             auto texture_info = best_point_obj->get_texture_info(0, 0);
-            auto norm = best_point_obj->get_normal(best_point);
+            auto norm = best_point_obj->get_normal(best_point, Vector3(camera.center, best_point));
             auto d = Vector3(camera.center, best_point);
             d = d / d.norm();
             norm = norm / norm.norm();
