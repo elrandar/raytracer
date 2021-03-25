@@ -8,6 +8,7 @@
 #include "scene/point_light.h"
 #include "cmath"
 #include "scene/triangle.h"
+#include "scene/blob.h"
 
 int main() {
     bool test = true;
@@ -42,12 +43,32 @@ int main() {
     {
         using namespace raytracer;
         auto scene = Scene();
+
+        auto blob = Blob(0.5);
+        blob.potential_points.emplace_back(1.75, 0.25, -0.25);
+        blob.potential_points.emplace_back(1.75, 0.25, 0.25);
+        auto triangles = blob.marching_cubes();
+        std::cout << triangles.size();
+        for (auto tri : triangles)
+        {
+            scene.objects.push_back(tri);
+        }
+
+        scene.objects.push_back(new Sphere(0.01, Point3(1.5, 0, -0.25)));
+        scene.objects.push_back(new Sphere(0.01, Point3(1.5, 0, 0.25)));
+        scene.objects.push_back(new Sphere(0.01, Point3(1.5, 0.5, -0.25)));
+        scene.objects.push_back(new Sphere(0.01, Point3(1.5, 0.5, 0.25)));
+        scene.objects.push_back(new Sphere(0.01, Point3(2, 0, -0.25)));
+        scene.objects.push_back(new Sphere(0.01, Point3(2, 0, 0.25)));
+        scene.objects.push_back(new Sphere(0.01, Point3(2, 0.5, -0.25)));
+        scene.objects.push_back(new Sphere(0.01, Point3(2, 0.5, 0.25)));
+
         scene.camera = Camera();
 //        scene.objects.emplace_back(new Sphere(0.1, Point3(1, 0, 0),
 //                                              Color(0, 0, 255)));
-        scene.objects.emplace_back(new Sphere(0.1, Point3(1, 0, -0.3), Color(255, 0, 0)));
-        scene.objects.emplace_back(new Sphere(0.1, Point3(1, 0, 0.3), Color(0, 255, 100)));
-        scene.objects.emplace_back(new Triangle(Point3(1, -0.1, -0.1), Point3(1.2, 0.1, 0), Point3(1, -0.1, 0.1)));
+//        scene.objects.emplace_back(new Sphere(0.1, Point3(1, 0, -0.3), Color(255, 0, 0)));
+//        scene.objects.emplace_back(new Sphere(0.1, Point3(1, 0, 0.3), Color(0, 255, 100)));
+//        scene.objects.emplace_back(new Triangle(Point3(1, -0.1, -0.1), Point3(1.2, 0.1, 0), Point3(1, -0.1, 0.1)));
         scene.objects.emplace_back(new Plane(Vector3(0, 1, 0), Point3(0, -0.10, 0)));
 //        scene.objects.emplace_back(new Plane(Vector3(1, 0, 0), Point3(7, 0, 0)));
 //        scene.lights.emplace_back(new PointLight(0.5, Point3(0, 3, -2)));

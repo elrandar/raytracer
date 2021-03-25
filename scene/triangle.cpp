@@ -58,3 +58,7 @@ raytracer::Point3 raytracer::Triangle::find_intersection(raytracer::Ray3 ray) {
 
     return plane.find_intersection(ray);
 }
+
+Triangle::Triangle(Point3 a, Point3 b, Point3 c, Color col) : Triangle(a, b, c){
+    mat = std::make_unique<UniformTexture>(1,1,col);
+}

@@ -13,7 +13,7 @@ namespace raytracer {
     public:
         Blob(double e);
         double find_potential(int x, int y);
-        std::vector<Triangle> marching_cubes();
+        std::vector<Triangle*> marching_cubes();
     public:
         std::vector<Point3> potential_points;
         Point3 corner;

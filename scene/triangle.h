@@ -9,6 +9,7 @@ namespace raytracer {
     class Triangle : public Object {
     public:
         Triangle(Point3 a,  Point3 b, Point3 c);
+        Triangle(Point3 a, Point3 b, Point3 c, Color col);
         Vector3 get_normal(Point3 point, Vector3 in_vec) override;
         TextureInfo get_texture_info(double x, double y) override;
         Point3 find_intersection(Ray3 ray) override;
