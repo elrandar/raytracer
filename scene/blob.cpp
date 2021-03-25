@@ -8,15 +8,15 @@
 raytracer::Blob::Blob(double e)
     : e(e),
       corner(Point3(0,0,0)){
-    nb_discretisation = 10;
+    nb_discretisation = 20;
     d = e / nb_discretisation;
-    corner = Point3(1.5, 0, -0.25);
+    corner = Point3(1.5, 0.25 - (e / 2), 0 - (e / 2));
     potential = 8;
 }
 
 double raytracer::Blob::find_potential(int x, int y) {
     double pt_potential = 0;
-    Point3 point_evaluated = corner + Point3(e / 2, y * d, x * d);
+    Point3 point_evaluated = corner + Point3(0.25, y * d, x * d);
     for (auto point : potential_points)
     {
         pt_potential += 1 / Vector3(point, point_evaluated).norm();
@@ -27,7 +27,7 @@ double raytracer::Blob::find_potential(int x, int y) {
 std::vector<raytracer::Triangle*> raytracer::Blob::marching_cubes() {
     auto triangles = std::vector<Triangle*>();
 
-    auto x_center = e / 2;
+    auto x_center = 0.25;
     for (int x = 0; x < nb_discretisation; x++)
     {
         for (int y = 0; y < nb_discretisation; y++)

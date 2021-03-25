@@ -44,7 +44,7 @@ int main() {
         using namespace raytracer;
         auto scene = Scene();
 
-        auto blob = Blob(0.5);
+        auto blob = Blob(0.8);
         blob.potential_points.emplace_back(1.75, 0.25, -0.25);
         blob.potential_points.emplace_back(1.75, 0.25, 0.25);
         auto triangles = blob.marching_cubes();
