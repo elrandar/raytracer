@@ -22,7 +22,7 @@ namespace raytracer {
 
         double norm() const;
         Point3 to_point() const;
-        Vector3 operator*(const double &constant);
+        Vector3 operator*(const double &constant) const;
         Vector3 operator/(const double &constant);
         Vector3 operator+(const Vector3 &other);
         Vector3 operator-(const Vector3 &other);

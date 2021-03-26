@@ -18,6 +18,9 @@ namespace raytracer {
         uint8_t m_B;
         uint8_t m_A;
 
+        int x;
+        int y;
+
         Color();
         Color(uint8_t R, uint8_t G, uint8_t B);
         Color(uint8_t R, uint8_t G, uint8_t B, uint8_t A);

@@ -8,10 +8,10 @@
 raytracer::Blob::Blob(double e)
     : e(e),
       corner(Point3(0,0,0)){
-    nb_discretisation = 20;
+    nb_discretisation = 100;
     d = e / nb_discretisation;
     corner = Point3(1.5, 0.25 - (e / 2), 0 - (e / 2));
-    potential = 8;
+    potential = 30;
 }
 
 double raytracer::Blob::find_potential(int x, int y) {
@@ -19,7 +19,8 @@ double raytracer::Blob::find_potential(int x, int y) {
     Point3 point_evaluated = corner + Point3(0.25, y * d, x * d);
     for (auto point : potential_points)
     {
-        pt_potential += 1 / Vector3(point, point_evaluated).norm();
+        auto norm = (Vector3(point, point_evaluated).norm());
+        pt_potential += 1 / (norm * norm);
     }
     return std::abs(pt_potential);
 }

@@ -11,7 +11,7 @@ raytracer::Vector3::Vector3(double x, double y, double z)
 raytracer::Vector3::Vector3() : Vector3(0, 0, 0)
 {}
 
-raytracer::Vector3 raytracer::Vector3::operator*(const double &constant) {
+raytracer::Vector3 raytracer::Vector3::operator*(const double &constant) const {
     return raytracer::Vector3(m_x * constant,
                               m_y * constant,
                               m_z * constant);

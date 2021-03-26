@@ -76,8 +76,8 @@ int main() {
         scene.lights.emplace_back(new PointLight(0.2, Point3(0, 1, 2)));
 //        scene.lights.emplace_back(new PointLight(0.5, Point3(1, 0, 0.15)));
 
-        int nb_cols = 1280;
-        int nb_rows = 720;
+        int nb_cols = 1280 / 4;
+        int nb_rows = 720 / 4;
 
         auto im = scene.generate_image(nb_cols, nb_rows);
 
