@@ -44,15 +44,18 @@ int main() {
         using namespace raytracer;
         auto scene = Scene();
 
-        auto blob = Blob(0.8);
-        blob.potential_points.emplace_back(1.75, 0.25, -0.25);
-        blob.potential_points.emplace_back(1.75, 0.25, 0.25);
-        auto triangles = blob.marching_cubes();
+        auto blob = Blob(0.5);
+//        blob.potential_points.emplace_back(1.75, 0.25, -0.25);
+//        blob.potential_points.emplace_back(1.75, 0.25, 0.25);
+        blob.potential_points.emplace_back(0.75, 0, 0.10);
+        auto triangles = blob.marching3DCubes();
         std::cout << triangles.size();
         for (auto tri : triangles)
         {
             scene.objects.push_back(tri);
         }
+
+        auto nb = scene.objects.size();
 
         scene.objects.push_back(new Sphere(0.01, Point3(1.5, 0, -0.25)));
         scene.objects.push_back(new Sphere(0.01, Point3(1.5, 0, 0.25)));
@@ -76,8 +79,8 @@ int main() {
         scene.lights.emplace_back(new PointLight(0.2, Point3(0, 1, 2)));
 //        scene.lights.emplace_back(new PointLight(0.5, Point3(1, 0, 0.15)));
 
-        int nb_cols = 1280 / 4;
-        int nb_rows = 720 / 4;
+        int nb_cols = 1280 / 2;
+        int nb_rows = 720 / 2;
 
         auto im = scene.generate_image(nb_cols, nb_rows);
 
