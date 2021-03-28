@@ -21,7 +21,7 @@ namespace raytracer {
 
         raytracer::Image generate_image(int nb_cols, int nb_rows);
         Color cast_ray(Ray3 ray) const;
-        bool is_blocked(Ray3 ray, Object *pObject);
+        bool is_blocked(Ray3 ray, Object *pObject) const;
 
         void process_part(int start_col, int end_col,
                           int start_row, int end_row,

@@ -108,8 +108,8 @@ raytracer::Color raytracer::Scene::cast_ray(Ray3 ray) const {
             auto L = Vector3(best_point, light->position);
 
 
-//            if (is_blocked(Ray3(best_point, L), best_point_obj))
-//                continue;
+            if (is_blocked(Ray3(best_point, L), best_point_obj))
+                continue;
             L = L / L.norm();
             auto texture_info = best_point_obj->get_texture_info(0, 0);
             auto norm = best_point_obj->get_normal(best_point, Vector3(camera.center, best_point));
@@ -137,7 +137,7 @@ raytracer::Color raytracer::Scene::cast_ray(Ray3 ray) const {
     return Color(0,0,0);
 }
 
-bool raytracer::Scene::is_blocked(Ray3 ray, Object *pObject) {
+bool raytracer::Scene::is_blocked(Ray3 ray, Object *pObject) const {
 
     auto point_distance = ray.vector.norm();
     for (auto object : objects)

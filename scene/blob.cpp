@@ -10,7 +10,7 @@ raytracer::Blob::Blob(double e)
       corner(Point3(0,0,0)){
     nb_discretisation = 60;
     d = e / nb_discretisation;
-    corner = Point3(0.5, 0 - (e / 2), 0.10 - (e / 2));
+    corner = Point3(0.5, 0 - (e / 2), 0 - (e / 2));
     potential = 30;
 }
 

@@ -44,10 +44,12 @@ int main() {
         using namespace raytracer;
         auto scene = Scene();
 
-        auto blob = Blob(0.5);
+        auto blob = Blob(1);
 //        blob.potential_points.emplace_back(1.75, 0.25, -0.25);
 //        blob.potential_points.emplace_back(1.75, 0.25, 0.25);
-        blob.potential_points.emplace_back(0.75, 0, 0.10);
+        blob.potential_points.emplace_back(0.75, 0, 0.25);
+        blob.potential_points.emplace_back(0.75, 0, -0.25);
+
         auto triangles = blob.marching3DCubes();
         std::cout << triangles.size();
         for (auto tri : triangles)
