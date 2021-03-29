@@ -19,7 +19,7 @@ namespace raytracer {
 
         Point3(double x, double y, double z);
         explicit Point3(bool is_none);
-        Point3 operator*(const double &constant);
+        Point3 operator*(const double &constant) const;
         Point3 operator/(const double &constant);
         Point3 operator+(const Point3 &pt) const;
         Point3 operator-(const Point3 &pt) const;

@@ -9,6 +9,7 @@
 #include "cmath"
 #include "scene/triangle.h"
 #include "scene/blob.h"
+#include "scene/bezier.h"
 
 int main() {
     bool test = true;
@@ -44,20 +45,34 @@ int main() {
         using namespace raytracer;
         auto scene = Scene();
 
-        auto blob = Blob(1);
+        // B L O B
+//        auto blob = Blob(1);
 //        blob.potential_points.emplace_back(1.75, 0.25, -0.25);
 //        blob.potential_points.emplace_back(1.75, 0.25, 0.25);
-        blob.potential_points.emplace_back(0.75, 0, 0.25);
-        blob.potential_points.emplace_back(0.75, 0, -0.25);
+//        blob.potential_points.emplace_back(0.75, 0, 0.25);
+//        blob.potential_points.emplace_back(0.75, 0, -0.25);
+//
+//        auto triangles = blob.marchingCubes();
+//        std::cout << triangles.size();
+//        for (auto tri : triangles)
+//        {
+//            scene.objects.push_back(tri);
+//        }
 
-        auto triangles = blob.marching3DCubes();
-        std::cout << triangles.size();
-        for (auto tri : triangles)
+        // Bezier
+
+        auto p0 = Point3(0.75, 0, 0);
+        auto p1 = Point3(0.75, 0.25, 0.15);
+
+        auto bezier = Bezier(p0, p1, Point3(0.75, 0.0833, 0),
+                             Point3(0.75, 0.0833 * 2, 0.0));
+
+//        auto spheres = bezier.generate_spheres();
+        auto spheres = bezier.generate_triangles();
+        for (auto &sph : spheres)
         {
-            scene.objects.push_back(tri);
+            scene.objects.push_back(sph);
         }
-
-        auto nb = scene.objects.size();
 
         scene.objects.push_back(new Sphere(0.01, Point3(1.5, 0, -0.25)));
         scene.objects.push_back(new Sphere(0.01, Point3(1.5, 0, 0.25)));
@@ -81,8 +96,8 @@ int main() {
         scene.lights.emplace_back(new PointLight(0.2, Point3(0, 1, 2)));
 //        scene.lights.emplace_back(new PointLight(0.5, Point3(1, 0, 0.15)));
 
-        int nb_cols = 1280 / 2;
-        int nb_rows = 720 / 2;
+        int nb_cols = 1280;
+        int nb_rows = 720;
 
         auto im = scene.generate_image(nb_cols, nb_rows);
 

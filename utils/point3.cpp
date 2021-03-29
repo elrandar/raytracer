@@ -13,7 +13,7 @@ raytracer::Point3::Point3(bool is_none) {
     m_is_none = is_none;
 }
 
-raytracer::Point3 raytracer::Point3::operator*(const double &constant) {
+raytracer::Point3 raytracer::Point3::operator*(const double &constant) const {
     return raytracer::Point3(m_x * constant,
                              m_y * constant,
                              m_z * constant);

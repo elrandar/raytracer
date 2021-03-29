@@ -39,7 +39,7 @@ double raytracer::Blob::find_potential(int x, int y, int z) {
     return std::abs(pt_potential);
 }
 
-std::vector<raytracer::Triangle*> raytracer::Blob::marching2DCubes() {
+std::vector<raytracer::Triangle*> raytracer::Blob::marchingSquares() {
     auto triangles = std::vector<Triangle*>();
 
     auto x_center = 0.25;
@@ -150,7 +150,7 @@ std::vector<raytracer::Triangle*> raytracer::Blob::marching2DCubes() {
     return triangles;
 }
 
-std::vector<raytracer::Triangle*> raytracer::Blob::marching3DCubes() {
+std::vector<raytracer::Triangle*> raytracer::Blob::marchingCubes() {
 
 
     std::vector<std::vector<int>> big_ass_array =
