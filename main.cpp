@@ -10,6 +10,8 @@
 #include "scene/triangle.h"
 #include "scene/blob.h"
 #include "scene/bezier.h"
+#include "scene/grass_blade.h"
+#include "scene/grass.h"
 
 int main() {
     bool test = true;
@@ -61,18 +63,42 @@ int main() {
 
         // Bezier
 
-        auto p0 = Point3(0.75, 0, 0);
-        auto p1 = Point3(0.75, 0.25, 0.15);
+        auto p0 = Point3(0.75, -0.1, 0);
+        auto p1 = Point3(0.75, 0.25, 0.02);
+//
+//        auto bezier = Bezier(p0, p1, Point3(0.75, 0.0833, 0),
+//                             Point3(0.75, 0.0833 * 2, 0.0));
 
-        auto bezier = Bezier(p0, p1, Point3(0.75, 0.0833, 0),
-                             Point3(0.75, 0.0833 * 2, 0.0));
 
-//        auto spheres = bezier.generate_spheres();
-        auto spheres = bezier.generate_triangles();
-        for (auto &sph : spheres)
+        auto grassb = GrassBlade(p0, 0.35, 0.1, 0.35 / 16, Vector3(1, 0, 0));
+
+
+
+        auto grass = Grass(Point3(0.75, -0.099, -0.5),
+                           Point3(1.5, -0.099, 0.75),
+                           2);
+//        auto triangles = grass.generate();
+        auto trtri = grassb.generate_triangles();
+
+        for (int i = -4; i < 6; i++)
         {
-            scene.objects.push_back(sph);
+            for (int j = -10; j < 10; j++)
+            {
+                int r = rand();
+                auto grassg = GrassBlade(p0 + Point3(i * (0.055 + (r % 400 / 40000.0)), 0, j * (0.04 + (r % 400 / 40000.0))), 0.051 + (r % 400 / 40000.0), -0.01 + (r % 400 / 40000.0), 0.10 / 16,
+                                         Vector3(1, 0, (r % 600) / 600.0));
+                auto trtr = grassg.generate_triangles();
+                scene.add_to_objects(std::vector<Object*>(trtr.begin(),trtr.end()));
+            }
         }
+
+
+//        scene.add_to_objects(std::vector<Object*>(triangles.begin(),triangles.end()));
+//        scene.add_to_objects(std::vector<Object*>(trtri.begin(),trtri.end()));
+
+
+
+        std::cout << "nb_triangles = " << scene.objects.size();
 
         scene.objects.push_back(new Sphere(0.01, Point3(1.5, 0, -0.25)));
         scene.objects.push_back(new Sphere(0.01, Point3(1.5, 0, 0.25)));
@@ -93,6 +119,8 @@ int main() {
 //        scene.objects.emplace_back(new Plane(Vector3(1, 0, 0), Point3(7, 0, 0)));
 //        scene.lights.emplace_back(new PointLight(0.5, Point3(0, 3, -2)));
         scene.lights.emplace_back(new PointLight(0.5, Point3(0, 1, -1)));
+
+//        scene.lights.emplace_back(new PointLight(1, Point3(1, 1, 1)));
         scene.lights.emplace_back(new PointLight(0.2, Point3(0, 1, 2)));
 //        scene.lights.emplace_back(new PointLight(0.5, Point3(1, 0, 0.15)));
 

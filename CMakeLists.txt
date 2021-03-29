@@ -11,6 +11,6 @@ add_executable(raytracer main.cpp utils/color.cpp utils/color.h utils/vector3.cp
         scene/scene.cpp scene/scene.h scene/texture_material.h scene/object.h scene/light.h
         scene/uniform_texture.cpp scene/uniform_texture.h utils/ray3.cpp utils/ray3.h scene/sphere.cpp
         scene/sphere.h scene/point_light.cpp scene/point_light.h scene/camera.cpp scene/camera.h scene/plane.cpp scene/plane.h
-        scene/triangle.cpp scene/triangle.h scene/blob.cpp scene/blob.h scene/bezier.cpp scene/bezier.h)
+        scene/triangle.cpp scene/triangle.h scene/blob.cpp scene/blob.h scene/bezier.cpp scene/bezier.h scene/grass_blade.cpp scene/grass_blade.h scene/grass.cpp scene/grass.h)
 
 target_link_libraries(raytracer PRIVATE Threads::Threads)

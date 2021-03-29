@@ -153,3 +153,10 @@ bool raytracer::Scene::is_blocked(Ray3 ray, Object *pObject) const {
     }
     return false;
 }
+
+void raytracer::Scene::add_to_objects(std::vector<Object *> obj_vec) {
+    for (auto &obs : obj_vec)
+    {
+        objects.push_back(obs);
+    }
+}

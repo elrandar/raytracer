@@ -23,6 +23,7 @@ namespace raytracer {
         Color cast_ray(Ray3 ray) const;
         bool is_blocked(Ray3 ray, Object *pObject) const;
 
+        void add_to_objects(std::vector<Object*> objects);
         void process_part(int start_col, int end_col,
                           int start_row, int end_row,
                           const Vector3 &y_a_scaled, const Vector3 &x_a_scaled,

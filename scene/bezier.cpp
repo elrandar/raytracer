@@ -39,7 +39,8 @@ std::vector<raytracer::Triangle*> raytracer::Bezier::generate_triangles() const 
 
     std::vector<Point3> pairs = std::vector<Point3>();
 
-    auto step = Vector3(p1, p2).norm() / 16;
+    auto step = Vector3(p1, p2).norm() / 3;
+    auto width = Vector3(p1, p2).norm() / 16;
     double t = 0;
     while (t <= 1)
     {
@@ -48,8 +49,8 @@ std::vector<raytracer::Triangle*> raytracer::Bezier::generate_triangles() const 
         auto normal = derivative ^ Vector3(1, 0, 0);
         normal = normal / normal.norm();
 
-        auto point1 = point + normal * step;
-        auto point2 = point - normal * step;
+        auto point1 = point + normal * (width - 0.5 * width * t);
+        auto point2 = point - normal * (width - 0.5 * width * t);
 
 
         pairs.push_back(point1);
@@ -66,7 +67,10 @@ std::vector<raytracer::Triangle*> raytracer::Bezier::generate_triangles() const 
     {
         if (pairs.size() - i >= 3)
         {
-            triangles.push_back(new Triangle(pairs[i], pairs[i + 1],  pairs[i + 2]));
+            auto col = Color(255, 0, 255);
+            if (i % 2 == 0)
+                col = Color(0, 255, 255);
+            triangles.push_back(new Triangle(pairs[i], pairs[i + 1],  pairs[i + 2], col));
             i++;
         }
         else if (pairs.size() - i <= 2)
@@ -96,6 +100,22 @@ raytracer::Vector3 raytracer::Bezier::derivative_at_point(double t) const {
                     + p2 * 3 * pow(t, 2);
 
     return Vector3(Point3(0, 0, 0), derivative);
+}
+
+std::vector<raytracer::Sphere *> raytracer::Bezier::control_points() const {
+    auto spheres = std::vector<Sphere*>();
+    spheres.push_back(new Sphere(0.005, pc1, Color(255, 0, 0)));
+    spheres.push_back(new Sphere(0.005, pc2, Color(255, 0, 0)));
+    return spheres;
+}
+
+raytracer::Bezier::Bezier()
+:   p1(Point3(true)),
+    p2(Point3(true)),
+    pc1(Point3(true)),
+    pc2(Point3(true))
+{
+
 }
 
 
